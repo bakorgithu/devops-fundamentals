@@ -8,8 +8,8 @@ variable "region" {
 
 variable "ami_id" {
   type = string
-  description = "provide the amid | by default the ami id is 12345678"
-  default = "12345678"
+  description = "provide the amid | by default the ami id is ami-0c80e2b6ccb9ad6d1"
+  default = "ami-0c80e2b6ccb9ad6d1"
 }
 
 variable "instance_type" {
@@ -24,5 +24,6 @@ variable "instance_name" {
 
 variable "key_name" {
   type = string 
+  default = "ivo_key"
   description = "this is required value please provide key name"
 }
