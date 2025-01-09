@@ -30,30 +30,30 @@ jobs:
           name: terraform-init
           path: ./devops-fundamentals/
 
-  # validate:
-  #   runs-on: ubuntu-latest
-  #   needs: init
+  validate:
+    runs-on: ubuntu-latest
+    needs: init
 
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-  #     - name: Set up Terraform
-  #       uses: hashicorp/setup-terraform@v2
-  #       with:
-  #         terraform_version: 1.5.0
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
 
-  #     - name: removed existing terraform files
-  #       run: |
-  #         rm -r ./terraform_handson
-  #         ls -la
+      - name: removed existing terraform files
+        run: |
+          rm -r ./*
+          ls -la
 
-  #     - name: Download Terraform Folder
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: terraform-init
+      - name: Download Terraform Folder
+        uses: actions/download-artifact@v3
+        with:
+          name: terraform-init
 
-  #     - name: Terraform Validate
-  #       run: |
-  #         terraform init
-  #         terraform validate
+      - name: Terraform Validate
+        run: |
+          terraform init
+          terraform validate
