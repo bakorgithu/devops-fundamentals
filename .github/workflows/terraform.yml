@@ -1,0 +1,59 @@
+name: Terraform Workflow
+
+on:
+  push:
+    branches:
+      - feature/cicd 
+      - main
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Init
+        id: init-step
+        run: |
+         terraform init
+
+      - name: Upload Terraform Folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-init
+          path: ./devops-fundamentals/
+
+  # validate:
+  #   runs-on: ubuntu-latest
+  #   needs: init
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Set up Terraform
+  #       uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: 1.5.0
+
+  #     - name: removed existing terraform files
+  #       run: |
+  #         rm -r ./terraform_handson
+  #         ls -la
+
+  #     - name: Download Terraform Folder
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: terraform-init
+
+  #     - name: Terraform Validate
+  #       run: |
+  #         terraform init
+  #         terraform validate
