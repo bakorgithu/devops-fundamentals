@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: terraform-init
-          path: ../devops-fundamentals/
+          path: ./**/
 
   validate:
     runs-on: ubuntu-latest
