@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: terraform-init
-          path: ./devops-fundamentals/
+          path: ../devops-fundamentals/
 
   validate:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
 
       - name: removed existing terraform files
         run: |
-          rm -r ./*
+          rm -r ./**
           ls -la
 
       - name: Download Terraform Folder
