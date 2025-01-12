@@ -21,7 +21,8 @@ jobs:
 
       - name: Terraform Init
         id: init-step
-        run: cd terraform_101
+        run: 
+         cd terraform_101
          terraform init
 
       - name: Upload Terraform Folder
@@ -54,6 +55,7 @@ jobs:
           name: terraform-init
 
       - name: Terraform Validate
-        run: cd terraform_101
+        run: 
+         cd terraform_101
           terraform init
           terraform validate
