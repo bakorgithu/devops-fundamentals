@@ -56,7 +56,11 @@ jobs:
         with:
           name: terraform-init
 
-      - name: Terraform Validate
+      - name: Terraform init
         run: 
           terraform init
+
+      - name: Terraform Validate
+        run: 
           terraform validate
+          
