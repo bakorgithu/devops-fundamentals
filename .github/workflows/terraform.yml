@@ -19,10 +19,12 @@ jobs:
         with:
           terraform_version: 1.5.0
 
+      - name: Change to Terraform Directory
+        run: cd terraform_101
+
       - name: Terraform Init
         id: init-step
         run: 
-         cd terraform_101
          terraform init
 
       - name: Upload Terraform Folder
@@ -56,6 +58,5 @@ jobs:
 
       - name: Terraform Validate
         run: 
-         cd terraform_101
           terraform init
           terraform validate
