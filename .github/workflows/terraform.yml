@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: terraform-init
-          path: ./terraform_101/
+          path: ./**/
 
   validate:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
 
       - name: removed existing terraform files
         run: |
-          rm -r ./terraform_101
+          rm -r ./**
           ls -la
 
       - name: Download Terraform Folder
@@ -80,7 +80,7 @@ jobs:
 
       - name: removed existing terraform files
         run: |
-          rm -r ./terraform_101
+          rm -r ./**
           ls -la
 
       - name: Download Terraform Folder
