@@ -25,7 +25,7 @@ jobs:
       - name: Terraform Init
         id: init-step
         run: 
-         terraform init
+         cd ./terraform_101 && terraform init
 
       - name: Upload Terraform Folder
         uses: actions/upload-artifact@v3
@@ -58,7 +58,7 @@ jobs:
 
       - name: Terraform init
         run: 
-          terraform init
+          cd ./terraform_101 && terraform init
 
       - name: Terraform Validate
         run: 
