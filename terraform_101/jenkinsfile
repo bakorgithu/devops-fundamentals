@@ -38,7 +38,7 @@ pipeline {
 
                 sh '''
                 cd ./devops-fundamentals/terraform_101
-                terraform plan -var-file="terraform.tfvars"
+                terraform plan 
                 '''
                 
                
