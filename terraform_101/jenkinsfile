@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
       AWS_DEFAULT_REGION = "us-east-2"
-      CREDENTIALS = credentials('ivo-credentials')
+      CREDENTIALS = credentials('ivo-aws-credentials')
     }
     stages{
         stage('checkout'){
@@ -32,16 +32,15 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Terraform plan') {
             steps {
 
                 sh '''
-                cd ./devops-fundamentals/terraform_101
-                terraform plan 
+                cd ./devops-fundamentals/terraform_101 
+                terraform plan -var-file="terraform.tfvars"
                 '''
-                
-               
+                      
             }
         }
     }
