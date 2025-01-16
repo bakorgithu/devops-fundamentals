@@ -32,16 +32,15 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Terraform plan') {
             steps {
 
                 sh '''
-                cd ./devops-fundamentals/terraform_101
-                terraform plan 
+                cd ./devops-fundamentals/terraform_101 
+                terraform plan -var-file="terraform.tfvars"
                 '''
-                
-               
+                      
             }
         }
     }
