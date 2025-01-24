@@ -41,18 +41,63 @@ Databases (e.g., MySQL, MongoDB, Cassandra).
 Distributed systems (e.g., Kafka, Zookeeper).
 Stateful applications that rely on unique pod identities.
 
-Comparison Table
-Feature	Deployment	DaemonSet	StatefulSet
-Purpose	Deploy stateless applications	Run a pod on every (or selected) node	Deploy stateful applications
-Pod Scheduling	Based on resource availability	One pod per node	Ordered scheduling (pod-0, pod-1)
-Scaling	Scalable	Tied to the number of nodes	Scalable, but retains identity
-Rolling Updates	Yes	No (manual update required)	Yes
-Pod Identity	All pods are identical	All pods are identical	Unique pod identities
-Persistent Storage	Not supported	Not supported	Supported (via PVC)
-Use Case Examples	Web servers, APIs, stateless apps	Log collectors, monitoring agents	Databases, Kafka, Zookeeper
-
 
 When to Use Each
+
 Deployment: When you need stateless, scalable, and easily upgradable applications.
 DaemonSet: When you need one pod per node for system or cluster-level tasks.
 StatefulSet: When you need stable identities, persistent storage, and ordered operations for stateful apps.
+
+Types of Services
+
+1. ClusterIP (Default)
+
+Description:
+
+Exposes the service internally to the cluster.
+Pods can communicate with the service using a virtual IP address (ClusterIP) assigned by Kubernetes.
+The service is not accessible from outside the cluster.
+
+Use Case:
+
+Internal communication between pods within the cluster (e.g., backend microservices communicating with each other).
+
+Key Points:
+
+Default service type.
+Only accessible within the cluster using ClusterIP.
+
+2. NodePort
+
+Description:
+
+Exposes the service on a static port on each node (the same port across all nodes).
+Makes the service accessible from outside the cluster using <NodeIP>:<NodePort>.
+The NodePort is a port in the range 30000-32767 (configurable in the Kubernetes API server).
+
+Use Case:
+
+Exposing applications for external access without using a load balancer.
+
+Key Points:
+
+Accessible via http://<NodeIP>:<NodePort>.
+No built-in load balancing.
+
+3. LoadBalancer
+
+Description:
+
+Exposes the service to the internet using a cloud provider’s load balancer.
+Supported in cloud environments like AWS, GCP, and Azure.
+Automatically provisions an external load balancer to distribute traffic to backend pods.
+
+Use Case:
+
+Exposing applications to the internet in a cloud environment with automatic load balancing.
+
+Key Points:
+
+Allocates an external IP address.
+Provides load balancing capabilities across pods.
+Typically used in cloud-based Kubernetes deployments.
