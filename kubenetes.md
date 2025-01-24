@@ -1,5 +1,5 @@
-1. Deployment
-Purpose:
+1. Deployment Purpose:
+
 Used to deploy stateless applications or services.
 Ensures a specified number of identical replicas of a pod are running.
 Handles rolling updates, rollbacks, scaling, and self-healing of pods.
@@ -13,8 +13,8 @@ Web servers (e.g., NGINX, Apache).
 REST APIs.
 Microservices-based applications.
 
-2. DaemonSet
-Purpose:
+2. DaemonSet Purpose:
+
 Ensures that a single pod runs on every node (or a subset of nodes based on selectors).
 Commonly used for running system-level or cluster-level services.
 Key Features:
@@ -26,8 +26,8 @@ Node monitoring (e.g., Prometheus Node Exporter, Datadog agents).
 Log collection (e.g., Fluentd, Filebeat).
 Networking agents (e.g., Calico, Cilium).
 
-3. StatefulSet
-Purpose:
+3. StatefulSet Purpose:
+
 Used to deploy stateful applications that require stable, persistent identities and storage.
 Ensures ordered deployment and scaling of pods.
 Maintains a stable network identity for each pod (e.g., pod-0, pod-1, pod-2).
