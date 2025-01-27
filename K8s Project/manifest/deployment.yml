@@ -34,7 +34,7 @@ spec:
   ports:
     - port: 80        # External port exposed by the service
       targetPort: 5000 # Port on the pod
-      nodePort: 31080  # Optional: Specify a node port (31080 in this case)
+      nodePort: 5000  # Optional: Specify a node port (31080 in this case)
   type: NodePort       # Change the type to NodePort
   livenessProbe:
           httpGet:
