@@ -23,26 +23,26 @@ spec:
       - name: python-app
         image: ivobakor007/flaskapp:latest
         ports:
-        - containerPort: 5000
-  apiVersion: v1
-  kind: Service
-  metadata:
+        - containerPort: 80
+apiVersion: v1
+kind: Service
+metadata:
   name: flaskservice
-  spec:   
+spec:
   selector:
     app: flask
   ports:
-    - port: 80        # External port exposed by the service
+    - port: 5000       # External port exposed by the service
       targetPort: 5000 # Port on the pod
       nodePort: 5000  # Optional: Specify a node port (31080 in this case)
   type: NodePort       # Change the type to NodePort
-  livenessProbe:
+        livenessProbe:
           httpGet:
             path: /
             port: 5000
           initialDelaySeconds: 5
           periodSeconds: 10
-  readinessProbe:
+        readinessProbe:
           httpGet:
             path: /
             port: 5000
