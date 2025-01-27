@@ -1,33 +1,45 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flaskapp
+  name: python-app
   labels:
-    app: flask 
+    app: app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: flask 
+      app: app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   template:
     metadata:
       labels:
-        app: flask 
+        app: app
     spec:
       containers:
-      - name: flaskapp
-        image: username/argocd-python:v1.0
+      - name: python-app
+        image: ivobakor007/flaskapp:latest
         ports:
         - containerPort: 5000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: flaskservice
-spec:
-  selector:
-    app: flask
-  ports:
-    - port: 80
-      targetPort: 5000
-  type: LoadBalancer
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
