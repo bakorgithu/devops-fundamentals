@@ -3,9 +3,14 @@ name: Terraform Workflow
 on:
   push:
     branches:
-      - feature/cicd 
-      - main
+      - '**' # Triggers for all branches
 
+  pull_request:
+        branches:
+          - main
+permissions:
+  id-token: write
+  
 jobs:
   init:
     runs-on: ubuntu-latest
