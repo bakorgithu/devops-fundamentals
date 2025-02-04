@@ -25,14 +25,11 @@ variable "key_name" {
 }
 
 variable "assume_role_policy" {
-  type = string
-  description = "Define who can use the permissions"
   default = null
 }
 
 variable "aws_iam_role_policy" {
   type = string
-  description = "Define the inline policy"
   default = null
 }
 
