@@ -28,7 +28,7 @@ jobs:
          cd ./terraform_101 && terraform init
 
       - name: Upload Terraform Folder
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: terraform-init
           path: ./**/
@@ -52,7 +52,7 @@ jobs:
           ls -la
 
       - name: Download Terraform Folder
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: terraform-init
 
@@ -91,7 +91,7 @@ jobs:
           ls -la
 
       - name: Download Terraform Folder
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: terraform-init
 
