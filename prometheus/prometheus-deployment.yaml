@@ -18,6 +18,18 @@ spec:
           image: prom/prometheus
           ports:
             - containerPort: 9090
+          livenessProbe:
+          httpGet:
+            path: /
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          readinessProbe:
+          httpGet:
+            path: /
+            port: 9090
+          initialDelaySeconds: 5
+          periodSeconds: 5
           resources:
             limits:
               memory: "512Mi"
