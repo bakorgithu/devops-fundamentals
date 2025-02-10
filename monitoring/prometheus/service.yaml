@@ -11,10 +11,10 @@ spec:
   clusterIP: None
   ports:
   - name: http-metrics
-    port: 8080
+    port: 7070
     targetPort: http-metrics
   - name: telemetry
-    port: 8081
+    port: 7071
     targetPort: telemetry
   selector:
     app.kubernetes.io/name: kube-state-metrics
