@@ -30,9 +30,9 @@ spec:
           timeoutSeconds: 5
         name: kube-state-metrics
         ports:
-        - containerPort: 8080
+        - containerPort: 7070
           name: http-metrics
-        - containerPort: 8081
+        - containerPort: 7071
           name: telemetry
         readinessProbe:
           httpGet:
