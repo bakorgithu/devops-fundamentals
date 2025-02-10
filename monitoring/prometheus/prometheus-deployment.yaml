@@ -13,21 +13,19 @@ spec:
       labels:
         app: prometheus-server
     spec:
+      serviceAccountName: prometheus
       containers:
         - name: prometheus
           image: prom/prometheus
+          command: 
+            - "prometheus"
+          args:
+            - "--config.file=/config/prometheus.yml"
           ports:
             - containerPort: 9090
-          resources:
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
-            requests:
-              memory: "256Mi"
-              cpu: "250m"
           volumeMounts:
             - name: config-volume
-              mountPath: /etc/prometheus
+              mountPath: /config
       volumes:
         - name: config-volume
           configMap:
